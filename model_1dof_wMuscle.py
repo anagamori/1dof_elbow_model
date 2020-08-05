@@ -104,8 +104,7 @@ Lmt_2_vec = np.zeros(len(time_sim))
 start_time = time.time()
 for t in range(len(time_sim)):
     # Muscle 1
-    U_eff_1 = muscle_fns.U_function(U_1[t],U_eff_1,step)  
-    
+    U_eff_1 = muscle_fns.U_function(U_1[t],U_eff_1,step)      
     
     (W_slow_1,W_fast_1) = muscle_fns.weighting_function(U_eff_1,m1.U_slow_th,m1.U_fast_th)
     
@@ -134,7 +133,7 @@ for t in range(len(time_sim)):
     muscle_velocity_1 = muscle_velocity_1 + 1/6*(l_0_de+2*l_1_de+2*l_2_de+l_3_de);
     Vce_1 = muscle_velocity_1/float(m1.L0/100)
     Lce_1 = muscle_length_1/float(m1.L0/100)
-    Lse_1 = (Lmt_1 - Lce_1*m1.L0*np.cos(m1.alpha))/float(m1.L0T)
+    Lse_1 = (Lmt_1 - Lce_1*m1.L0*np.cos(m1.alpha))/float(m1.L0T) # Eq. 16
     
     Force_tendon_1 = muscle_fns.F_se_function(Lse_1)*m1.F0;    
     T_1 = Force_tendon_1*r_m1 # torque from muscle 1
@@ -168,7 +167,7 @@ for t in range(len(time_sim)):
     muscle_velocity_2 = muscle_velocity_2 + 1/6*(l_0_de+2*l_1_de+2*l_2_de+l_3_de);
     Vce_2 = muscle_velocity_2/float(m2.L0/100)
     Lce_2 = muscle_length_2/float(m2.L0/100)    
-    Lse_2 = (Lmt_2 - Lce_2*m2.L0*np.cos(m2.alpha))/float(m2.L0T)
+    Lse_2 = (Lmt_2 - Lce_2*m2.L0*np.cos(m2.alpha))/float(m2.L0T) # Eq. 16
     
     Force_tendon_2 = muscle_fns.F_se_function(Lse_2)*m2.F0;  
     T_2 = Force_tendon_2*r_m2 # torque from muscle 2
